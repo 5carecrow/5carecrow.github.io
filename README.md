@@ -34,7 +34,7 @@ git commit -m "new post"
 git push
 ```
 
-注意：本机若设置了 `HTTP_PROXY` / `HTTPS_PROXY`，`git push` 可能报 `CONNECT tunnel failed 502`；推送前清掉这些变量即可，桌面菜单已自动处理。
+注意：本机直连 GitHub 不稳定，`git push` 需要走 `127.0.0.1:7890` 代理；桌面菜单已自动设置代理变量。
 
 ## 自定义 QQZone 主题
 

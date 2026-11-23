@@ -70,10 +70,10 @@ if not defined msg goto END
 git add -A
 git commit -m "%msg%"
 if errorlevel 1 goto FAIL
-set "HTTPS_PROXY="
-set "HTTP_PROXY="
-set "https_proxy="
-set "http_proxy="
+set "HTTPS_PROXY=http://127.0.0.1:7890"
+set "HTTP_PROXY=http://127.0.0.1:7890"
+set "https_proxy=http://127.0.0.1:7890"
+set "http_proxy=http://127.0.0.1:7890"
 git push
 if errorlevel 1 goto FAIL
 echo Pushed. GitHub Actions will publish in about 1 minute.
