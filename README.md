@@ -4,15 +4,16 @@
 
 ## 本地开发
 
-需要安装 Hugo Extended（版本与 `.github/workflows/deploy.yml` 中的 `HUGO_VERSION` 保持一致）。
+仓库位置：`E:\devprojects\5carecrow.github.io`，已加入 WorkBuddy 工作空间。桌面快捷方式「5carecrow 博客管理」提供新建文章、预览、构建检查、提交推送等常用操作。
+
+工具已随仓库放在 `tools/`（Hugo 0.170.1 Extended、Dart Sass 1.108.2、Gitleaks 8.30.1），无需全局安装。
+
+命令行方式（Git Bash）：
 
 ```bash
-# 克隆时要带上主题子模块
-git clone --recurse-submodules https://github.com/5carecrow/5carecrow.github.io.git
-cd 5carecrow.github.io
-
-# 本地预览，草稿也会显示
-hugo server -D
+cd /e/devprojects/5carecrow.github.io
+export PATH="/e/devprojects/5carecrow.github.io/tools/dart-sass/dart-sass:$PATH"
+./tools/hugo/hugo.exe server -D
 ```
 
 打开 <http://localhost:1313> 查看效果。
@@ -32,6 +33,8 @@ git add .
 git commit -m "new post"
 git push
 ```
+
+注意：本机若设置了 `HTTP_PROXY` / `HTTPS_PROXY`，`git push` 可能报 `CONNECT tunnel failed 502`；推送前清掉这些变量即可，桌面菜单已自动处理。
 
 ## 自定义
 
