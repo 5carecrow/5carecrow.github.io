@@ -24,17 +24,6 @@
   </section>
 
   <section class="mod">
-    <div class="mod-hd"><span class="mod-ico ico-people"></span>最近访客</div>
-    <div class="mod-bd visitor-list">
-      {{ range .Site.Params.qqzone.visitors }}
-      <span class="visitor" title="{{ . }}">{{ . }}</span>
-      {{ else }}
-      <span class="empty">暂无访客</span>
-      {{ end }}
-    </div>
-  </section>
-
-  <section class="mod">
     <div class="mod-hd"><span class="mod-ico ico-folder"></span>日志分类</div>
     <div class="mod-bd link-list">
       {{ with site.Taxonomies.categories }}

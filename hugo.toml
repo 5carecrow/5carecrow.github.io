@@ -125,12 +125,6 @@ type = "toc"
     url = "/guestbook/"
     weight = -85
 
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = -80
-
   [[menu.side]]
     identifier = "feed"
     name = "好友动态"
@@ -144,13 +138,6 @@ type = "toc"
     url = "/posts/"
     weight = -95
     params = { icon = "💛" }
-
-  [[menu.side]]
-    identifier = "related"
-    name = "与我相关"
-    url = "/posts/"
-    weight = -90
-    params = { icon = "👥" }
 
   [[menu.side]]
     identifier = "album"

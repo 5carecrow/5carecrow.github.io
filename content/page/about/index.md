@@ -3,11 +3,6 @@ title: "关于"
 description: "关于 5carecrow 和这个博客"
 date: 2026-11-23
 slug: about
-menu:
-  main:
-    weight: -90
-    params:
-      icon: user
 ---
 
 这里是 5carecrow 的个人博客。
