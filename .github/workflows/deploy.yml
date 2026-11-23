@@ -32,6 +32,9 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Install Dart Sass
+        run: npm install -g sass@1.108.2
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 

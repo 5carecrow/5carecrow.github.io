@@ -1,6 +1,6 @@
 # 5carecrow 的博客
 
-基于 Hugo + PaperMod 的 GitHub Pages 博客。推送到 `main` 后，GitHub Actions 会自动构建并发布到 <https://5carecrow.github.io/>。
+基于 Hugo + Stack 的 GitHub Pages 博客。推送到 `main` 后，GitHub Actions 会自动构建并发布到 <https://5carecrow.github.io/>。
 
 ## 本地开发
 
@@ -23,7 +23,7 @@ hugo server -D
 hugo new posts/2026-11-24-my-post.md
 ```
 
-编辑 `content/posts/` 里生成的 Markdown 文件，把 `draft` 改成 `false` 就会在正式站点显示。
+编辑 `content/posts/` 里生成的 Markdown 文件，把 `draft` 改成 `false` 就会在正式站点显示。本仓库用 `posts` 作为文章 section（对应 `hugo.toml` 里的 `mainSections = ["posts"]`），不是 Stack 文档默认的 `post`。
 
 发布：
 
@@ -35,10 +35,10 @@ git push
 
 ## 自定义
 
-- 站点标题、描述、菜单、社交链接：编辑 `hugo.toml`
-- 首页介绍：`[params.homeInfoParams]`
-- 样式微调：`assets/css/extended/custom.css`
-- 主题升级：`git submodule update --remote --merge themes/PaperMod`
+- 站点标题、语言、侧栏、菜单、社交链接：编辑 `hugo.toml`
+- 侧栏副标题：`[params.sidebar].subtitle`
+- 样式微调：`assets/scss/custom.scss`
+- 主题版本：子模块 `themes/Stack` 固定在 v3.34.2；要升级先 `git -C themes/Stack fetch --tags`，再 `git -C themes/Stack checkout <新 tag>`，最后提交父仓库的指针变化
 
 ## 自定义域名
 

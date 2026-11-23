@@ -1,15 +1,15 @@
 ---
 title: "博客上线了"
+slug: "hello-world"
 date: 2026-11-23T19:35:00+08:00
-lastmod: 2026-11-23T19:35:00+08:00
+lastmod: 2026-11-23T20:10:00+08:00
 draft: false
 description: "第一篇：记录博客的搭建过程。"
 tags: ["随笔", "Hugo"]
 categories: ["记录"]
-toc: true
 ---
 
-博客搭起来了。用的是 Hugo + PaperMod，源码放在 GitHub，推送到 `main` 后由 GitHub Actions 自动构建并发布。
+博客搭起来了。用的是 Hugo + Stack，源码放在 GitHub，推送到 `main` 后由 GitHub Actions 自动构建并发布。
 
 ## 这里会写什么
 
@@ -20,7 +20,7 @@ toc: true
 ## 本地写文章
 
 ```bash
-hugo new posts/2026-11-23-my-post.md
+hugo new posts/2026-11-24-my-post.md
 hugo server -D
 ```
 

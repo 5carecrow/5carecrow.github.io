@@ -1,59 +1,134 @@
 baseURL = "https://5carecrow.github.io/"
-locale = "zh-CN"
+locale = "zh-cn"
 title = "5carecrow 的博客"
-theme = "PaperMod"
+theme = "Stack"
+defaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
 enableRobotsTXT = true
 enableGitInfo = true
-paginate = 10
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  posts = "/posts/:slug/"
+  page = "/:slug/"
+
+[languages]
+  [languages.zh-cn]
+    label = "简体中文"
+    title = "5carecrow 的博客"
+    weight = 1
+    [languages.zh-cn.params.sidebar]
+      subtitle = "记录 AI、开发与生活中的发现"
 
 [params]
-  env = "production"
-  title = "5carecrow 的博客"
-  description = "记录 AI、开发与生活中的发现"
-  keywords = ["博客", "AI", "开发", "随笔"]
-  author = "5carecrow"
-  defaultTheme = "auto"
-  disableThemeToggle = false
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-  UseHugoSugar = true
-  ShowToc = true
-  TocOpen = false
+  mainSections = ["posts"]
+  featuredImageField = "image"
+  rssFullContent = true
+  favicon = ""
 
-[params.homeInfoParams]
-  Title = "你好，我是 5carecrow"
-  Content = "这里用来记录技术实践、AI 工具和一些值得留下的想法。"
+  [params.footer]
+    since = 2026
+    customText = ""
 
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/5carecrow"
+  [params.dateFormat]
+    published = "2006-01-02"
+    lastUpdated = "2006-01-02 15:04 MST"
+
+  [params.sidebar]
+    emoji = "🌱"
+    subtitle = "记录 AI、开发与生活中的发现"
+    [params.sidebar.avatar]
+      enabled = false
+      local = true
+      src = "img/avatar.png"
+
+  [params.article]
+    headingAnchor = true
+    math = false
+    toc = true
+    readingTime = true
+    [params.article.license]
+      enabled = false
+      default = "Licensed under CC BY-NC-SA 4.0"
+
+  [params.comments]
+    enabled = false
+
+  [params.opengraph]
+    card = "summary_large_image"
+
+  [params.colorScheme]
+    toggle = true
+    default = "auto"
+
+  [params.imageProcessing.cover]
+    enabled = true
+
+  [params.imageProcessing.content]
+    enabled = true
+
+[[params.widgets.homepage]]
+type = "search"
+
+[[params.widgets.homepage]]
+type = "archives"
+params = { limit = 5 }
+
+[[params.widgets.homepage]]
+type = "categories"
+params = { limit = 10 }
+
+[[params.widgets.homepage]]
+type = "tag-cloud"
+params = { limit = 10 }
+
+[[params.widgets.page]]
+type = "toc"
 
 [menu]
   [[menu.main]]
     identifier = "posts"
     name = "文章"
     url = "/posts/"
-    weight = 10
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 20
-  [[menu.main]]
-    identifier = "search"
-    name = "搜索"
-    url = "/search/"
-    weight = 30
-  [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 40
+    weight = -50
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+  [[menu.social]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/5carecrow"
+    params = { icon = "brand-github" }
+
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "categories"
+    weight = 200
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [["\\[", "\\]"], ["$$", "$$"]]
+    inline = [["\\(", "\\)"]]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  endLevel = 4
+  ordered = true
+  startLevel = 2
+
+[markup.highlight]
+  noClasses = false
+  codeFences = true
+  guessSyntax = true
+  lineNos = true
+  lineNumbersInTable = true
+  tabWidth = 4
