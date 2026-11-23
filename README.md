@@ -38,6 +38,7 @@ git push
 - 站点标题、语言、侧栏、菜单、社交链接：编辑 `hugo.toml`
 - 侧栏副标题：`[params.sidebar].subtitle`
 - 样式微调：`assets/scss/custom.scss`
+- 浏览器标签图标：替换 `static/favicon.ico`、`static/favicon.svg`、`static/apple-touch-icon.png`
 - 主题版本：子模块 `themes/Stack` 固定在 v3.34.2；要升级先 `git -C themes/Stack fetch --tags`，再 `git -C themes/Stack checkout <新 tag>`，最后提交父仓库的指针变化
 
 ## 自定义域名
