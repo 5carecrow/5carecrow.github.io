@@ -1,0 +1,74 @@
+<aside class="side-col">
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-user"></span>个人资料</div>
+    <div class="mod-bd profile-bd">
+      <img class="avatar" src="{{ (.Site.Params.qqzone.avatar | default "favicon.svg") | relURL }}" alt="avatar">
+      <div class="profile-name">{{ .Site.Params.qqzone.nickname | default .Site.Title }}</div>
+      <div class="profile-sign">{{ .Site.Params.qqzone.signature }}</div>
+      <ul class="profile-stats">
+        <li><b>{{ len $posts }}</b><span>日志</span></li>
+        <li><b>{{ len site.Taxonomies.categories }}</b><span>分类</span></li>
+        <li><b>{{ len site.Taxonomies.tags }}</b><span>标签</span></li>
+      </ul>
+      {{ with .Site.Params.qqzone.github }}
+      <a class="profile-link" href="{{ . }}" target="_blank" rel="noopener">访问我的 GitHub »</a>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-music"></span>音乐盒</div>
+    <div class="mod-bd music-bd">
+      <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="music-text">
+        <b>正在播放</b>
+        <span>{{ .Site.Params.qqzone.music | default "今天也要开心呀" }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-note"></span>公告</div>
+    <div class="mod-bd notice-bd">{{ .Site.Params.qqzone.notice | markdownify }}</div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-people"></span>最近访客</div>
+    <div class="mod-bd visitor-list">
+      {{ range .Site.Params.qqzone.visitors }}
+      <span class="visitor" title="{{ . }}">{{ . }}</span>
+      {{ else }}
+      <span class="empty">暂无访客</span>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-folder"></span>日志分类</div>
+    <div class="mod-bd link-list">
+      {{ with site.Taxonomies.categories }}
+        {{ range .ByCount }}
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}<em>{{ .Count }}</em></a>
+        {{ end }}
+      {{ else }}
+        <span class="empty">暂无分类</span>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-tag"></span>标签云</div>
+    <div class="mod-bd tag-cloud">
+      {{ with site.Taxonomies.tags }}
+        {{ range first 16 .ByCount }}
+          {{ $size := cond (gt .Count 1) 14 12 }}
+          <a style="font-size:{{ $size }}px" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        {{ end }}
+      {{ else }}
+        <span class="empty">暂无标签</span>
+      {{ end }}
+    </div>
+  </section>
+</aside>

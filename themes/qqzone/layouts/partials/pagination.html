@@ -1,0 +1,7 @@
+{{ if gt .TotalPages 1 }}
+<div class="pagination">
+  {{ with .Prev }}<a href="{{ .URL }}">« 上一页</a>{{ else }}<span class="disabled">« 上一页</span>{{ end }}
+  <span class="page-num">{{ .PageNumber }} / {{ .TotalPages }}</span>
+  {{ with .Next }}<a href="{{ .URL }}">下一页 »</a>{{ else }}<span class="disabled">下一页 »</span>{{ end }}
+</div>
+{{ end }}

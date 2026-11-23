@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="mod post-single">
+  <div class="mod-hd"><span class="mod-ico ico-note"></span>{{ .Title }}</div>
+  <div class="mod-bd">
+    <div class="post-meta single-meta">
+      <span>发表于 {{ .Date.Format "2006-01-02 15:04" }}</span>
+      {{ with .Lastmod }}<span> · 更新于 {{ .Format "2006-01-02" }}</span>{{ end }}
+      {{ with .Params.categories }}<span> · 分类：{{ delimit . ", " }}</span>{{ end }}
+    </div>
+    <div class="post-content">{{ .Content }}</div>
+    <div class="post-end">
+      {{ with .Params.tags }}<span class="post-tags">标签：{{ delimit . " · " }}</span>{{ end }}
+    </div>
+  </div>
+</article>
+
+<nav class="post-nav">
+  {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">« 上一篇：{{ .Title }}</a>{{ end }}
+  {{ with .NextInSection }}<a href="{{ .RelPermalink }}">下一篇：{{ .Title }} »</a>{{ end }}
+</nav>
+{{ end }}

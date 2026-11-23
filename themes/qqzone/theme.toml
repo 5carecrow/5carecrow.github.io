@@ -1,0 +1,9 @@
+name = "QQZone"
+description = "A classic QQ Zone inspired Hugo theme"
+version = "1.0.0"
+license = "MIT"
+min_version = "0.120.0"
+
+[author]
+  name = "5carecrow"
+  home = "https://github.com/5carecrow"

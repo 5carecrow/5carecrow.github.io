@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale | default "zh-CN" }}">
+{{ partial "head.html" . }}
+<body class="{{ if .IsHome }}home{{ else }}{{ .Section }}{{ end }}">
+  {{ partial "header.html" . }}
+  <div class="page-wrap">
+    {{ partial "sidebar.html" . }}
+    <main class="main-col">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+  {{ partial "footer.html" . }}
+  <script src="{{ "js/qqzone.js" | relURL }}"></script>
+</body>
+</html>

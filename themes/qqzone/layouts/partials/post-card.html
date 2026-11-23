@@ -1,0 +1,12 @@
+<article class="post-card">
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <div class="post-meta">
+    <span>发表于 {{ .Date.Format "2006-01-02" }}</span>
+    {{ with .Params.categories }}<span> · 分类：{{ delimit . ", " }}</span>{{ end }}
+  </div>
+  <p class="post-summary">{{ .Summary | plainify | truncate 140 }}</p>
+  <div class="post-card-foot">
+    {{ with .Params.tags }}<span class="post-tags">标签：{{ delimit . " · " }}</span>{{ end }}
+    <a class="read-more" href="{{ .RelPermalink }}">阅读全文 »</a>
+  </div>
+</article>

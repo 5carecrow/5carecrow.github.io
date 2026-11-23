@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+<section class="mod">
+  <div class="mod-hd"><span class="mod-ico ico-folder"></span>日志归档 <span class="mod-count">共 {{ len $posts }} 篇</span></div>
+  <div class="mod-bd archive">
+    {{ range $posts.GroupByDate "2006" }}
+    <h4 class="archive-year">{{ .Key }} 年</h4>
+    <ul class="archive-list">
+      {{ range .Pages }}
+      <li><span class="archive-date">{{ .Date.Format "01-02" }}</span><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ if not $posts }}<p class="empty">暂无归档。</p>{{ end }}
+  </div>
+</section>
+{{ end }}

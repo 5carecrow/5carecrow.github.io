@@ -1,7 +1,7 @@
 baseURL = "https://5carecrow.github.io/"
 locale = "zh-cn"
 title = "5carecrow 的博客"
-theme = "Stack"
+theme = "qqzone"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 enableRobotsTXT = true
@@ -27,6 +27,18 @@ enableGitInfo = true
   featuredImageField = "image"
   rssFullContent = true
   favicon = "favicon.ico"
+
+  [params.qqzone]
+    brand = "QQ空间"
+    nickname = "5carecrow"
+    signature = "记录 AI、开发与生活中的发现"
+    avatar = "favicon.svg"
+    mood = "折腾工具，也记录生活。"
+    notice = "欢迎光临我的小站。这里用来记录 AI 实践、开发踩坑和一些值得留下的想法。"
+    music = "今日推荐：安静的键盘声"
+    since = 2026
+    github = "https://github.com/5carecrow"
+    visitors = ["小明", "阿花", "路人甲", "自己"]
 
   [params.footer]
     since = 2026
@@ -90,9 +102,9 @@ type = "toc"
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "文章"
+    name = "日志"
     url = "/posts/"
-    weight = -50
+    weight = -95
 
   [[menu.social]]
     identifier = "github"

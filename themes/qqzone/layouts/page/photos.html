@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $photos := slice }}
+{{ range readDir "static/photos" }}
+  {{ if not .IsDir }}{{ $photos = $photos | append .Name }}{{ end }}
+{{ end }}
+<section class="mod">
+  <div class="mod-hd"><span class="mod-ico ico-photo"></span>我的相册 <span class="mod-count">{{ len $photos }} 张</span></div>
+  <div class="mod-bd">
+    <div class="photo-grid">
+      {{ range sort $photos }}
+      <figure>
+        <img src="{{ printf "/photos/%s" . | relURL }}" alt="{{ . }}">
+        <figcaption>{{ . }}</figcaption>
+      </figure>
+      {{ else }}
+      <p class="empty">相册还是空的，把图片放到 static/photos/ 就会显示在这里。</p>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $photos := slice }}
+{{ range readDir "static/photos" }}
+  {{ if not .IsDir }}{{ $photos = $photos | append .Name }}{{ end }}
+{{ end }}
+
+<section class="mod welcome">
+  <div class="mod-hd"><span class="mod-ico ico-home"></span>欢迎光临</div>
+  <div class="mod-bd welcome-bd">
+    <p>{{ .Site.Params.qqzone.notice | markdownify }}</p>
+    <div class="mood"><span class="mood-label">今日心情</span>{{ .Site.Params.qqzone.mood }}</div>
+  </div>
+</section>
+
+<section class="mod">
+  <div class="mod-hd"><span class="mod-ico ico-book"></span>最新日志 <a class="mod-more" href="{{ "/posts/" | relURL }}">更多 »</a></div>
+  <div class="mod-bd">
+    {{ range first 5 $posts }}{{ partial "post-card.html" . }}{{ end }}
+    {{ if not $posts }}<p class="empty">还没有日志，去写一篇吧。</p>{{ end }}
+  </div>
+</section>
+
+<section class="mod">
+  <div class="mod-hd"><span class="mod-ico ico-photo"></span>相册速览 <a class="mod-more" href="{{ "/photos/" | relURL }}">更多 »</a></div>
+  <div class="mod-bd photo-strip">
+    {{ range first 4 (sort $photos) }}
+    <a href="{{ "/photos/" | relURL }}"><img src="{{ printf "/photos/%s" . | relURL }}" alt="{{ . }}"></a>
+    {{ else }}
+    <span class="empty">相册还是空的</span>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
