@@ -1,12 +1,15 @@
 {{ define "main" }}
 {{ $posts := where site.RegularPages "Section" "posts" }}
 {{ $paginator := .Paginate $posts }}
-<section class="mod">
-  <div class="mod-hd"><span class="mod-ico ico-book"></span>全部日志 <span class="mod-count">共 {{ len $posts }} 篇</span></div>
-  <div class="mod-bd">
-    {{ range $paginator.Pages }}{{ partial "post-card.html" . }}{{ end }}
-    {{ if not $posts }}<p class="empty">这里还没有日志。</p>{{ end }}
-    {{ partial "pagination.html" $paginator }}
-  </div>
+<div class="feed-filter">
+  <span>全部日志 <span class="mod-count">共 {{ len $posts }} 篇</span></span>
+  <a href="{{ "" | relURL }}" title="刷新">↻</a>
+</div>
+<section class="mod feed-list">
+  {{ range $paginator.Pages }}{{ partial "post-card.html" . }}{{ end }}
+  {{ if not $posts }}<p class="empty">这里还没有日志。</p>{{ end }}
 </section>
+<div class="mod">
+  <div class="mod-bd">{{ partial "pagination.html" $paginator }}</div>
+</div>
 {{ end }}

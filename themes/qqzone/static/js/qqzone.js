@@ -1,4 +1,50 @@
 (function () {
+  // 签到（本地记录，按月份统计）
+  var checkinBtn = document.getElementById('checkin-btn');
+  var checkinDate = document.getElementById('checkin-date');
+  var checkinCount = document.getElementById('checkin-count');
+
+  if (checkinBtn && checkinDate && checkinCount) {
+    var now = new Date();
+    var monthKey = 'qqzone-checkin-' + now.getFullYear() + '-' + (now.getMonth() + 1);
+    var todayKey = monthKey + '-' + now.getDate();
+    var count = 0;
+    var signedToday = false;
+
+    try {
+      count = parseInt(localStorage.getItem(monthKey) || '0', 10) || 0;
+      signedToday = localStorage.getItem(todayKey) === '1';
+    } catch (e) {}
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    checkinDate.textContent = pad(now.getMonth() + 1) + '.' + pad(now.getDate());
+    checkinCount.textContent = count;
+
+    function refreshCheckin() {
+      if (signedToday) {
+        checkinBtn.textContent = '已签到 ✓';
+        checkinBtn.classList.add('done');
+      } else {
+        checkinBtn.textContent = '签到';
+        checkinBtn.classList.remove('done');
+      }
+    }
+
+    refreshCheckin();
+
+    checkinBtn.addEventListener('click', function () {
+      if (signedToday) return;
+      signedToday = true;
+      count += 1;
+      try {
+        localStorage.setItem(todayKey, '1');
+        localStorage.setItem(monthKey, String(count));
+      } catch (e) {}
+      checkinCount.textContent = count;
+      refreshCheckin();
+    });
+  }
+
   var searchInput = document.getElementById('qq-search');
   var searchBox = document.getElementById('qq-search-results');
 

@@ -5,20 +5,24 @@
   {{ if not .IsDir }}{{ $photos = $photos | append .Name }}{{ end }}
 {{ end }}
 
-<section class="mod welcome">
-  <div class="mod-hd"><span class="mod-ico ico-home"></span>欢迎光临</div>
-  <div class="mod-bd welcome-bd">
-    <p>{{ .Site.Params.qqzone.notice | markdownify }}</p>
-    <div class="mood"><span class="mood-label">今日心情</span>{{ .Site.Params.qqzone.mood }}</div>
+<section class="mod composer">
+  <div class="mod-bd composer-box">
+    <div class="composer-input">说点什么吧，记录此刻的心情…</div>
+    <div class="composer-tools">
+      <a href="{{ "/photos/" | relURL }}" title="相册">📷</a>
+      <a href="{{ "/guestbook/" | relURL }}" title="留言">🔗</a>
+      <a class="composer-btn" href="{{ printf "%s/new/main/content/posts" .Site.Params.qqzone.github }}" target="_blank" rel="noopener">发表</a>
+    </div>
   </div>
 </section>
 
-<section class="mod">
-  <div class="mod-hd"><span class="mod-ico ico-book"></span>最新日志 <a class="mod-more" href="{{ "/posts/" | relURL }}">更多 »</a></div>
-  <div class="mod-bd">
-    {{ range first 5 $posts }}{{ partial "post-card.html" . }}{{ end }}
-    {{ if not $posts }}<p class="empty">还没有日志，去写一篇吧。</p>{{ end }}
-  </div>
+<div class="feed-filter">
+  <span>全部动态 ▾</span>
+  <a href="{{ "" | relURL }}" title="刷新">↻</a>
+</div>
+<section class="mod feed-list">
+  {{ range first 8 $posts }}{{ partial "post-card.html" . }}{{ end }}
+  {{ if not $posts }}<p class="empty">还没有动态，去写一篇日志吧。</p>{{ end }}
 </section>
 
 <section class="mod">
@@ -29,6 +33,12 @@
     {{ else }}
     <span class="empty">相册还是空的</span>
     {{ end }}
+  </div>
+</section>
+
+<section class="mod">
+  <div class="mod-bd welcome-bd">
+    <div class="mood"><span class="mood-label">今日心情</span>{{ .Site.Params.qqzone.mood }}</div>
   </div>
 </section>
 {{ end }}

@@ -1,0 +1,20 @@
+<aside class="side-nav">
+  {{ $current := .RelPermalink }}
+  {{ range .Site.Menus.side.ByWeight }}
+  <a class="side-nav-item{{ if eq $current .URL }} active{{ end }}" href="{{ .URL }}">
+    <span class="side-ico">{{ .Params.icon | default "◆" }}</span>{{ .Name }}
+  </a>
+  {{ end }}
+
+  <div class="side-apps">
+    <div class="side-apps-hd">我的应用 <span>▾</span></div>
+    <div class="side-app-grid">
+      <a class="app-tile" href="{{ "/posts/" | relURL }}"><span class="app-ico" style="background:#5fa8ee">📖</span>日志</a>
+      <a class="app-tile" href="{{ "/photos/" | relURL }}"><span class="app-ico" style="background:#ffb300">📷</span>相册</a>
+      <a class="app-tile" href="{{ "/guestbook/" | relURL }}"><span class="app-ico" style="background:#7e57c2">💬</span>留言</a>
+      <a class="app-tile" href="{{ "/archives/" | relURL }}"><span class="app-ico" style="background:#26a69a">🗂</span>归档</a>
+      <a class="app-tile" href="{{ .Site.Params.qqzone.github }}" target="_blank" rel="noopener"><span class="app-ico" style="background:#455a75">🐙</span>GitHub</a>
+      <a class="app-tile" href="{{ "index.xml" | relURL }}"><span class="app-ico" style="background:#ef6c4d">📡</span>RSS</a>
+    </div>
+  </div>
+</aside>

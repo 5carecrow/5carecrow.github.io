@@ -1,0 +1,63 @@
+<aside class="right-col">
+  <section class="mod checkin-card">
+    <div class="mod-bd">
+      <div class="checkin-date" id="checkin-date">--.--</div>
+      <div class="checkin-meta">本月签到次数 <b id="checkin-count">0</b> 次</div>
+      <button class="checkin-btn" id="checkin-btn" type="button">签到</button>
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-music"></span>音乐盒</div>
+    <div class="mod-bd music-bd">
+      <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="music-text">
+        <b>正在播放</b>
+        <span>{{ .Site.Params.qqzone.music | default "今天也要开心呀" }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-note"></span>公告</div>
+    <div class="mod-bd notice-bd">{{ .Site.Params.qqzone.notice | markdownify }}</div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-people"></span>最近访客</div>
+    <div class="mod-bd visitor-list">
+      {{ range .Site.Params.qqzone.visitors }}
+      <span class="visitor" title="{{ . }}">{{ . }}</span>
+      {{ else }}
+      <span class="empty">暂无访客</span>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-folder"></span>日志分类</div>
+    <div class="mod-bd link-list">
+      {{ with site.Taxonomies.categories }}
+        {{ range .ByCount }}
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}<em>{{ .Count }}</em></a>
+        {{ end }}
+      {{ else }}
+        <span class="empty">暂无分类</span>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="mod-hd"><span class="mod-ico ico-tag"></span>标签云</div>
+    <div class="mod-bd tag-cloud">
+      {{ with site.Taxonomies.tags }}
+        {{ range first 16 .ByCount }}
+          {{ $size := cond (gt .Count 1) 14 12 }}
+          <a style="font-size:{{ $size }}px" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        {{ end }}
+      {{ else }}
+        <span class="empty">暂无标签</span>
+      {{ end }}
+    </div>
+  </section>
+</aside>

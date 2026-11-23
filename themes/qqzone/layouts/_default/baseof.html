@@ -4,10 +4,11 @@
 <body class="{{ if .IsHome }}home{{ else }}{{ .Section }}{{ end }}">
   {{ partial "header.html" . }}
   <div class="page-wrap">
-    {{ partial "sidebar.html" . }}
+    {{ partial "left-nav.html" . }}
     <main class="main-col">
       {{ block "main" . }}{{ end }}
     </main>
+    {{ partial "right-col.html" . }}
   </div>
   {{ partial "footer.html" . }}
   <script src="{{ "js/qqzone.js" | relURL }}"></script>
