@@ -1,0 +1,59 @@
+baseURL = "https://5carecrow.github.io/"
+locale = "zh-CN"
+title = "5carecrow 的博客"
+theme = "PaperMod"
+enableRobotsTXT = true
+enableGitInfo = true
+paginate = 10
+
+[params]
+  env = "production"
+  title = "5carecrow 的博客"
+  description = "记录 AI、开发与生活中的发现"
+  keywords = ["博客", "AI", "开发", "随笔"]
+  author = "5carecrow"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoSugar = true
+  ShowToc = true
+  TocOpen = false
+
+[params.homeInfoParams]
+  Title = "你好，我是 5carecrow"
+  Content = "这里用来记录技术实践、AI 工具和一些值得留下的想法。"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/5carecrow"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 20
+  [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 30
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 40
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
