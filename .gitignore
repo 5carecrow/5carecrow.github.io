@@ -7,3 +7,5 @@ Thumbs.db
 /tools/hugo/
 /tools/dart-sass/
 /tools/gitleaks/
+__pycache__/
+*.pyc

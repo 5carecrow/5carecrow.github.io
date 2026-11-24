@@ -36,6 +36,31 @@ git push
 
 注意：本机直连 GitHub 不稳定，`git push` 需要走 `127.0.0.1:7890` 代理；桌面菜单已自动设置代理变量。
 
+## 手机上发文（Issue 发文）
+
+不用带电脑、不用装 Git：手机装 GitHub App，进 `5carecrow/5carecrow.github.io` 仓库 → **Issues** → **New issue**：
+
+- **标题**：文章标题
+- **正文**：文章内容，直接写 Markdown（粘贴图片会自动生成 GitHub 外链，不用图床）
+- **标签**：分类和标签
+
+常用标签写法：
+
+| 标签 | 作用 |
+|---|---|
+| `随笔`、`Hugo` 等 | 作为文章标签，显示在标签云 |
+| `分类:记录` 或 `category:记录` | 作为日志分类 |
+| `draft` 或 `草稿` | 存为草稿，站点不显示；去掉后自动发布 |
+
+提交后机器人会在 issue 下回复一条带文章链接的评论。约 1 分钟后文章上线，网址固定为 `https://5carecrow.github.io/posts/issue-<编号>/`，以后改标题也不会变。
+
+补充说明：
+
+- 再次**编辑** issue 会同步更新文章；**删除** issue 会一并删除对应文章。
+- 只有 `5carecrow` 账号发的 issue 会被处理，其他人发的不会写进仓库。
+- 工作流在 `.github/workflows/issue-to-post.yml`，转换脚本在 `scripts/issue-to-post.py`。
+- 草稿和发布状态只由 `draft` 标签控制，不需要改文件。
+
 ## 自定义 QQZone 主题
 
 - 主题目录：`themes/qqzone/`（普通目录，不是 git 子模块，可直接改）
